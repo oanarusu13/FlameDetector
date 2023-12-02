@@ -1,0 +1,220 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 22 22, 22, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  D:\Keil\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.6.0
+Target DLL:      CMSIS_AGDI.dll V1.33.15.0
+Dialog DLL:      TARMCM1.DLL V1.14.6.0
+ 
+<h2>Project:</h2>
+D:\Data\Keil\FlameDetector.uvprojx
+Project File Date:  11/29/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'D:\Keil\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+main.c(2): warning: In file included from...
+./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
+void PIT_Init(void); // Functie de initializarea a modulului periferic
+                     ^
+main.c(3): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define RED_LED_PIN (18) // PORT B RED LED
+                         ^
+./gpio.h(14): warning: no newline at end of file [-Wnewline-eof]
+void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+                                                            ^
+main.c(9): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void updateLEDs(){
+               ^
+                void
+main.c(9): warning: no previous prototype for function 'updateLEDs' [-Wmissing-prototypes]
+void updateLEDs(){
+     ^
+main.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void updateLEDs(){
+^
+static 
+main.c(37): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void initLeds()
+             ^
+              void
+main.c(39): warning: // comments are not allowed in this language [-Wcomment]
+        // Semnal de ceas pentru PORT B
+        ^
+main.c(37): warning: no previous prototype for function 'initLeds' [-Wmissing-prototypes]
+void initLeds()
+     ^
+main.c(37): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initLeds()
+^
+static 
+main.c(73): warning: implicit declaration of function 'ADC0_Init' [-Wimplicit-function-declaration]
+        ADC0_Init();
+        ^
+main.c(78): warning: 'return' will never be executed [-Wunreachable-code-return]
+        return 0;
+               ^
+10 warnings generated.
+compiling main.c...
+compiling system_MKL25Z4.c...
+gpio.c(1): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define RED_LED_PIN (18) // PORT B RED LED
+                         ^
+./gpio.h(14): warning: no newline at end of file [-Wnewline-eof]
+void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+                                                            ^
+gpio.c(3): warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+extern led_state;
+~~~~~~ ^
+int
+gpio.c(6): warning: // comments are not allowed in this language [-Wcomment]
+        // Siguranta -> status e ori 0 ori 1
+        ^
+gpio.c(10): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOA->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(13): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOB->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(16): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOC->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(19): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOD->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(32): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOA->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(36): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOB->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(40): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOC->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(44): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOD->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(49): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+13 warnings generated.
+compiling gpio.c...
+adc.c(4): warning: // comments are not allowed in this language [-Wcomment]
+#define ADC_CHANNEL (8) // PORT C PIN 1
+                        ^
+adc.c(6): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void ADC0_Init() {
+              ^
+               void
+adc.c(41): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int ADC0_Calibrate() {
+                  ^
+                   void
+adc.c(70): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        uint16_t calibration_var = 0x0000;
+                 ^
+adc.c(111): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+uint16_t ADC0_Read(){
+                  ^
+                   void
+adc.c(132): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void ADC0_IRQHandler(){
+                    ^
+                     void
+6 warnings generated.
+compiling adc.c...
+assembling startup_MKL25Z4.s...
+pit.c(1): warning: In file included from...
+./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
+void PIT_Init(void); // Functie de initializarea a modulului periferic
+                     ^
+pit.c(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+extern void updateLEDs();
+                      ^
+                       void
+pit.c(11): warning: // comments are not allowed in this language [-Wcomment]
+        // Activarea semnalului de ceas pentru perifericul PIT
+        ^
+pit.c(20): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  // Activarea <EE>ntreruperilor pe canalul 0
+               ^
+pit.c(28): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+        // Activara <EE>ntreruperilor pe canalul 1
+                    ^
+pit.c(34): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+        // Activarea <EE>ntreruperii mascabile si setarea prioritatiis
+                     ^
+pit.c(52): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+pit.c(4): warning: no previous extern declaration for non-static variable 'timer_value' [-Wmissing-variable-declarations]
+uint32_t timer_value;
+         ^
+pit.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32_t timer_value;
+^
+pit.c(5): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
+uint8_t led_state;
+        ^
+pit.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t led_state;
+^
+9 warnings generated.
+compiling pit.c...
+uart.c(5): warning: // comments are not allowed in this language [-Wcomment]
+        // Utilizam masca TDRE pentru a verifica
+        ^
+1 warning generated.
+compiling uart.c...
+linking...
+Program Size: Code=3780 RO-data=272 RW-data=0 ZI-data=360  
+".\Objects\FlameDetector.axf" - 0 Error(s), 39 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.Kinetis_KLxx_DFP.1.15.0.pack
+                Keil.Kinetis_KLxx_DFP.1.15.0
+                NXP Kinetis KLxx Series Device Support and Examples
+   * Component: Startup Version: 2.5.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/MKL25Z128xxx4
+  ./RTE/_Target_1
+  C:/Users/Admin/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.5.0
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
+      Include file:  Device/Source/system_MKL25Z4.h
+      Source file:   Device/Source/system_MKL25Z4.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
