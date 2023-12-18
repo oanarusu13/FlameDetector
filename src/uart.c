@@ -1,5 +1,16 @@
 #include "uart.h"
 
+extern volatile int angle_left;
+extern volatile int angle_right;
+
+/* Transmite un string */
+void UART0_Transmit_String(uint8_t* str) {
+	uint8_t i = 0;
+	while(str[i] != '\0'){
+		UART0_Transmit(str[i++]);
+	}
+}
+
 /* Transmite un octet de date */
 void UART0_Transmit(uint8_t data) {
 	// Utilizam masca TDRE pentru a verifica
@@ -25,6 +36,7 @@ uint8_t UART0_Receive(void) {
 /* Initializeaza UART0 cu parametrii dati */
 void UART0_Initialize(uint32_t baud_rate, uint16_t osr) {
 	uint16_t sbr;
+	uint32_t sys_clock = 48000000UL;
 	
 	// Activeaza ceasul pentru modulul UART0
 	SIM->SCGC4 = SIM->SCGC4 | SIM_SCGC4_UART0_MASK;
@@ -46,7 +58,8 @@ void UART0_Initialize(uint32_t baud_rate, uint16_t osr) {
 	PORTA->PCR[2] = PORT_PCR_ISF_MASK | PORT_PCR_MUX(2); // TX
 	
 	// Setarea baud rate-ului si a ratei de supraesantionare
-	sbr = (uint16_t)((DEFAULT_SYSTEM_CLOCK)/(baud_rate * (osr)));
+	uint16_t temp = sys_clock;
+	sbr = (uint16_t)((sys_clock)/(baud_rate * (osr)));
 	UART0->BDH &= UART0_BDH_SBR_MASK;
 	UART0->BDH |= UART0_BDH_SBR(sbr>>8);
 	UART0->BDL = UART_BDL_SBR(sbr);
@@ -79,8 +92,14 @@ void UART0_Initialize(uint32_t baud_rate, uint16_t osr) {
 void UART0_IRQHandler(void) {
 	if(UART0->S1 & UART0_S1_RDRF_MASK) {
 		uint8_t data = UART0->D;
-		//data = data + 1;
-		UART0_Transmit(data);
-		//UART0->D = data;
+		
+		//Manual control
+		/*
+		if (data == 44){
+			angle_left = 1;
+		}
+		else if (data == 46){
+			angle_right = 1;
+		}*/
 	}
 }

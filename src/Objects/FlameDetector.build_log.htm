@@ -3,200 +3,480 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.38.0.0
-Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 22 22, 22, LIC=----
+IDE-Version: µVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: . ., ., LIC=----
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.38.0.0
-Toolchain Path:  D:\Keil\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.19
-Assembler:       Armasm.exe V6.19
-Linker/Locator:  ArmLink.exe V6.19
-Library Manager: ArmAr.exe V6.19
-Hex Converter:   FromElf.exe V6.19
-CPU DLL:         SARMCM3.DLL V5.38.0.0
+Toolchain:       MDK-Lite  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.21
+Assembler:       Armasm.exe V6.21
+Linker/Locator:  ArmLink.exe V6.21
+Library Manager: ArmAr.exe V6.21
+Hex Converter:   FromElf.exe V6.21
+CPU DLL:         SARMCM3.DLL V5.39.0.0
 Dialog DLL:      DARMCM1.DLL V1.19.6.0
-Target DLL:      CMSIS_AGDI.dll V1.33.15.0
+Target DLL:      CMSIS_AGDI.dll V1.33.16.0
 Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
-D:\Data\Keil\FlameDetector.uvprojx
-Project File Date:  11/29/2023
+D:\Teme rusu\micro\Keil\FlameDetector.uvprojx
+Project File Date:  12/18/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.19', folder: 'D:\Keil\ARM\ARMCLANG\Bin'
+*** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-main.c(2): warning: In file included from...
-./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
-void PIT_Init(void); // Functie de initializarea a modulului periferic
-                     ^
-main.c(3): warning: In file included from...
-./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
-#define RED_LED_PIN (18) // PORT B RED LED
-                         ^
-./gpio.h(14): warning: no newline at end of file [-Wnewline-eof]
-void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
-                                                            ^
-main.c(9): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void updateLEDs(){
-               ^
-                void
-main.c(9): warning: no previous prototype for function 'updateLEDs' [-Wmissing-prototypes]
-void updateLEDs(){
-     ^
-main.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void updateLEDs(){
-^
-static 
-main.c(37): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void initLeds()
-             ^
-              void
-main.c(39): warning: // comments are not allowed in this language [-Wcomment]
-        // Semnal de ceas pentru PORT B
-        ^
-main.c(37): warning: no previous prototype for function 'initLeds' [-Wmissing-prototypes]
-void initLeds()
-     ^
-main.c(37): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initLeds()
-^
-static 
-main.c(73): warning: implicit declaration of function 'ADC0_Init' [-Wimplicit-function-declaration]
-        ADC0_Init();
-        ^
-main.c(78): warning: 'return' will never be executed [-Wunreachable-code-return]
-        return 0;
-               ^
-10 warnings generated.
-compiling main.c...
-compiling system_MKL25Z4.c...
-gpio.c(1): warning: In file included from...
-./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
-#define RED_LED_PIN (18) // PORT B RED LED
-                         ^
-./gpio.h(14): warning: no newline at end of file [-Wnewline-eof]
-void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
-                                                            ^
-gpio.c(3): warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
-extern led_state;
-~~~~~~ ^
-int
-gpio.c(6): warning: // comments are not allowed in this language [-Wcomment]
-        // Siguranta -> status e ori 0 ori 1
-        ^
-gpio.c(10): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOA->PDDR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(13): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOB->PDDR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(16): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOC->PDDR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(19): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOD->PDDR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(32): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOA->PSOR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(36): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOB->PSOR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(40): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOC->PSOR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(44): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                        GPIOD->PSOR |= (state << pin);
-                                    ~~  ~~~~~~^~~~~~
-gpio.c(49): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-13 warnings generated.
-compiling gpio.c...
-adc.c(4): warning: // comments are not allowed in this language [-Wcomment]
-#define ADC_CHANNEL (8) // PORT C PIN 1
-                        ^
-adc.c(6): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void ADC0_Init() {
-              ^
-               void
-adc.c(41): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-int ADC0_Calibrate() {
-                  ^
-                   void
-adc.c(70): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-        uint16_t calibration_var = 0x0000;
-                 ^
-adc.c(111): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-uint16_t ADC0_Read(){
-                  ^
-                   void
-adc.c(132): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void ADC0_IRQHandler(){
-                    ^
-                     void
-6 warnings generated.
-compiling adc.c...
-assembling startup_MKL25Z4.s...
 pit.c(1): warning: In file included from...
 ./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
-void PIT_Init(void); // Functie de initializarea a modulului periferic
-                     ^
-pit.c(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-extern void updateLEDs();
-                      ^
-                       void
-pit.c(11): warning: // comments are not allowed in this language [-Wcomment]
-        // Activarea semnalului de ceas pentru perifericul PIT
-        ^
-pit.c(20): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  // Activarea <EE>ntreruperilor pe canalul 0
-               ^
-pit.c(28): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-        // Activara <EE>ntreruperilor pe canalul 1
-                    ^
+    3 | void PIT_Init(void); // Functie de initializarea a modulului periferic
+      |                      ^
+pit.c(3): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define RED_LED_PIN (18) // PORT B RED LED
+      |                          ^
+./gpio.h(26): warning: no newline at end of file [-Wnewline-eof]
+   26 | void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+      |                                                             ^
+pit.c(8): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+    8 | static const float ratio_sys_tick = 2.2918;
+      |                    ~~~~~~~~~~~~~~   ^~~~~~
+pit.c(10): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   10 | extern void updateLEDs();
+      |                       ^
+      |                        void
+pit.c(15): warning: // comments are not allowed in this language [-Wcomment]
+   15 |         // Activarea semnalului de ceas pentru perifericul PIT
+      |         ^
+pit.c(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   // Activarea <EE>ntreruperilor pe canalul 0
+      |                ^
 pit.c(34): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-        // Activarea <EE>ntreruperii mascabile si setarea prioritatiis
-                     ^
-pit.c(52): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-pit.c(4): warning: no previous extern declaration for non-static variable 'timer_value' [-Wmissing-variable-declarations]
-uint32_t timer_value;
-         ^
-pit.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t timer_value;
-^
-pit.c(5): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
-uint8_t led_state;
-        ^
+   34 |         // Activara <EE>ntreruperilor pe canalul 1
+      |                     ^
+pit.c(40): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   40 |         // Activarea <EE>ntreruperii mascabile si setarea prioritatiis
+      |                      ^
+pit.c(22): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+   22 |         uint32_t ldval = (uint32_t)(0.286f * 24000000UL) - 1;
+      |                  ^
+pit.c(58): warning: no newline at end of file [-Wnewline-eof]
+   58 | }
+      |  ^
+pit.c(5): warning: no previous extern declaration for non-static variable 'timer_value' [-Wmissing-variable-declarations]
+    5 | uint32_t timer_value;
+      |          ^
 pit.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t led_state;
-^
-9 warnings generated.
+    5 | uint32_t timer_value;
+      | ^
+pit.c(6): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
+    6 | uint8_t led_state;
+      |         ^
+pit.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    6 | uint8_t led_state;
+      | ^
+pit.c(8): warning: unused variable 'ratio_sys_tick' [-Wunused-const-variable]
+    8 | static const float ratio_sys_tick = 2.2918;
+      |                    ^~~~~~~~~~~~~~
+pit.c(32): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   32 |         PIT->CHANNEL[1].LDVAL = 0x9FFFFF;
+      |         ^~~~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4132): note: expanded from macro 'PIT'
+ 4132 | #define PIT                                      ((PIT_Type *)PIT_BASE)
+      |                                                  ^
+pit.c(35): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   35 |         PIT->CHANNEL[1].TCTRL |= PIT_TCTRL_TIE_MASK;
+      |         ^~~~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4132): note: expanded from macro 'PIT'
+ 4132 | #define PIT                                      ((PIT_Type *)PIT_BASE)
+      |                                                  ^
+pit.c(37): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   37 |         PIT->CHANNEL[1].TCTRL |= PIT_TCTRL_TEN_MASK;
+      |         ^~~~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4132): note: expanded from macro 'PIT'
+ 4132 | #define PIT                                      ((PIT_Type *)PIT_BASE)
+      |                                                  ^
+pit.c(55): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   55 |         if(PIT->CHANNEL[1].TFLG & PIT_TFLG_TIF_MASK) {
+      |            ^~~~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4132): note: expanded from macro 'PIT'
+ 4132 | #define PIT                                      ((PIT_Type *)PIT_BASE)
+      |                                                  ^
+pit.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   56 |                 PIT->CHANNEL[1].TFLG &= PIT_TFLG_TIF_MASK; 
+      |                 ^~~~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4132): note: expanded from macro 'PIT'
+ 4132 | #define PIT                                      ((PIT_Type *)PIT_BASE)
+      |                                                  ^
+19 warnings generated.
 compiling pit.c...
-uart.c(5): warning: // comments are not allowed in this language [-Wcomment]
-        // Utilizam masca TDRE pentru a verifica
-        ^
-1 warning generated.
+main.c(2): warning: In file included from...
+./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | void PIT_Init(void); // Functie de initializarea a modulului periferic
+      |                      ^
+main.c(3): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define RED_LED_PIN (18) // PORT B RED LED
+      |                          ^
+./gpio.h(26): warning: no newline at end of file [-Wnewline-eof]
+   26 | void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+      |                                                             ^
+main.c(4): warning: In file included from...
+./adc.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define ADC_CHANNEL (11) // PORT C PIN 2
+      |                          ^
+main.c(6): warning: In file included from...
+./pwm.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define OSCILLOSCOPE_PIN (2) // PORT B , PIN 2
+      |                              ^
+./pwm.h(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+    7 | void Signal_Control();
+      |                    ^
+      |                     void
+main.c(20): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   20 | void updateLEDs(){
+      |                ^
+      |                 void
+main.c(20): warning: no previous prototype for function 'updateLEDs' [-Wmissing-prototypes]
+   20 | void updateLEDs(){
+      |      ^
+main.c(20): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   20 | void updateLEDs(){
+      | ^
+      | static 
+main.c(48): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   48 | void initLeds()
+      |              ^
+      |               void
+main.c(50): warning: // comments are not allowed in this language [-Wcomment]
+   50 |         // Semnal de ceas pentru PORT B
+      |         ^
+main.c(48): warning: no previous prototype for function 'initLeds' [-Wmissing-prototypes]
+   48 | void initLeds()
+      |      ^
+main.c(48): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   48 | void initLeds()
+      | ^
+      | static 
+main.c(78): warning: unused variable 'i' [-Wunused-variable]
+   78 |         int i = 0;
+      |             ^
+main.c(112): warning: 'return' will never be executed [-Wunreachable-code-return]
+  112 |         return 0;
+      |                ^
+main.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   56 |         PORTB->PCR[RED_LED_PIN] &= ~PORT_PCR_MUX_MASK;
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4446): note: expanded from macro 'PORTB'
+ 4446 | #define PORTB                                    ((PORT_Type *)PORTB_BASE)
+      |                                                  ^
+main.c(57): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   57 |         PORTB->PCR[RED_LED_PIN] |= PORT_PCR_MUX(1);
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4446): note: expanded from macro 'PORTB'
+ 4446 | #define PORTB                                    ((PORT_Type *)PORTB_BASE)
+      |                                                  ^
+main.c(60): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   60 |         PORTB->PCR[GREEN_LED_PIN] &= ~PORT_PCR_MUX_MASK;
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4446): note: expanded from macro 'PORTB'
+ 4446 | #define PORTB                                    ((PORT_Type *)PORTB_BASE)
+      |                                                  ^
+main.c(61): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   61 |         PORTB->PCR[GREEN_LED_PIN] |= PORT_PCR_MUX(1);
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4446): note: expanded from macro 'PORTB'
+ 4446 | #define PORTB                                    ((PORT_Type *)PORTB_BASE)
+      |                                                  ^
+main.c(64): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   64 |         PORTD->PCR[BLUE_LED_PIN] &= ~PORT_PCR_MUX_MASK;
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4456): note: expanded from macro 'PORTD'
+ 4456 | #define PORTD                                    ((PORT_Type *)PORTD_BASE)
+      |                                                  ^
+main.c(65): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   65 |         PORTD->PCR[BLUE_LED_PIN] |= PORT_PCR_MUX(1);
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4456): note: expanded from macro 'PORTD'
+ 4456 | #define PORTD                                    ((PORT_Type *)PORTD_BASE)
+      |                                                  ^
+19 warnings generated.
+compiling main.c...
+compiling system_MKL25Z4.c...
+assembling startup_MKL25Z4.s...
+pwm.c(1): warning: In file included from...
+./pwm.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define OSCILLOSCOPE_PIN (2) // PORT B , PIN 2
+      |                              ^
+./pwm.h(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+    7 | void Signal_Control();
+      |                    ^
+      |                     void
+pwm.c(2): warning: In file included from...
+./general.h(1): warning: // comments are not allowed in this language [-Wcomment]
+    1 | //#define DEBUG
+      | ^
+./general.h(1): warning: no newline at end of file [-Wnewline-eof]
+    1 | //#define DEBUG
+      |                ^
+pwm.c(8): warning: // comments are not allowed in this language [-Wcomment]
+    8 | // Function to convert an integer to a string
+      | ^
+pwm.c(29): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+   29 |         str[i++] = (remainder > 9) ? (remainder - 10) + 'a' : remainder + '0';
+      |                  ~                   ~~~~~~~~~~~~~~~~~^~~~~
+pwm.c(29): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+   29 |         str[i++] = (remainder > 9) ? (remainder - 10) + 'a' : remainder + '0';
+      |                  ~                                            ~~~~~~~~~~^~~~~
+pwm.c(40): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+   40 |     int start = 0;
+      |         ^
+pwm.c(9): warning: no previous prototype for function 'itoa' [-Wmissing-prototypes]
+    9 | void itoa(int num, char* str, int base) {
+      |      ^
+pwm.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
+    9 | void itoa(int num, char* str, int base) {
+      | ^
+      | static 
+pwm.c(52): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   52 | void TPM2_Init(){
+      |               ^
+      |                void
+pwm.c(99): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   99 | void Signal_Control(){
+      |                    ^
+      |                     void
+pwm.c(99): warning: no previous prototype for function 'Signal_Control' [-Wmissing-prototypes]
+   99 | void Signal_Control(){
+      |      ^
+./pwm.h(7): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+    7 | void Signal_Control();
+      |      ^              
+      |                     void
+pwm.c(4): warning: no previous extern declaration for non-static variable 'angle_left' [-Wmissing-variable-declarations]
+    4 | volatile int angle_left;
+      |              ^
+pwm.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    4 | volatile int angle_left;
+      |          ^
+pwm.c(5): warning: no previous extern declaration for non-static variable 'angle_right' [-Wmissing-variable-declarations]
+    5 | volatile int angle_right;
+      |              ^
+pwm.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    5 | volatile int angle_right;
+      |          ^
+pwm.c(15): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   15 |         str[i++] = '0';
+      |         ^~~
+pwm.c(16): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   16 |         str[i] = '\0';
+      |         ^~~
+pwm.c(29): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   29 |         str[i++] = (remainder > 9) ? (remainder - 10) + 'a' : remainder + '0';
+      |         ^~~
+pwm.c(35): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   35 |         str[i++] = '-';
+      |         ^~~
+pwm.c(37): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   37 |     str[i] = '\0'; // Null-terminate the string
+      |     ^~~
+pwm.c(43): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   43 |         char temp = str[start];
+      |                     ^~~
+pwm.c(44): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   44 |         str[start] = str[end];
+      |         ^~~
+pwm.c(44): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   44 |         str[start] = str[end];
+      |                      ^~~
+pwm.c(45): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   45 |         str[end] = temp;
+      |         ^~~
+pwm.c(59): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   59 |         PORTB->PCR[OSCILLOSCOPE_PIN] |= PORT_PCR_MUX(3);
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4446): note: expanded from macro 'PORTB'
+ 4446 | #define PORTB                                    ((PORT_Type *)PORTB_BASE)
+      |                                                  ^
+24 warnings generated.
+compiling pwm.c...
+gpio.c(1): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define RED_LED_PIN (18) // PORT B RED LED
+      |                          ^
+./gpio.h(26): warning: no newline at end of file [-Wnewline-eof]
+   26 | void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+      |                                                             ^
+gpio.c(3): warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+    3 | extern led_state;
+      | ~~~~~~ ^
+      | int
+gpio.c(6): warning: // comments are not allowed in this language [-Wcomment]
+    6 |         // Siguranta -> status e ori 0 ori 1
+      |         ^
+gpio.c(10): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   10 |                         GPIOA->PDDR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(13): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   13 |                         GPIOB->PDDR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(16): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   16 |                         GPIOC->PDDR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(19): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   19 |                         GPIOD->PDDR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(32): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   32 |                         GPIOA->PSOR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(36): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   36 |                         GPIOB->PSOR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(40): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   40 |                         GPIOC->PSOR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(44): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   44 |                         GPIOD->PSOR |= (state << pin);
+      |                                     ~~  ~~~~~~^~~~~~
+gpio.c(49): warning: no newline at end of file [-Wnewline-eof]
+   49 | }
+      |  ^
+13 warnings generated.
+compiling gpio.c...
+uart.c(16): warning: // comments are not allowed in this language [-Wcomment]
+   16 |         // Utilizam masca TDRE pentru a verifica
+      |         ^
+uart.c(61): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+   61 |         uint16_t temp = sys_clock;
+      |                  ~~~~   ^~~~~~~~~
+uart.c(61): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+   61 |         uint16_t temp = sys_clock;
+      |                  ^
+uart.c(61): warning: unused variable 'temp' [-Wunused-variable]
+   61 |         uint16_t temp = sys_clock;
+      |                  ^~~~
+uart.c(94): warning: unused variable 'data' [-Wunused-variable]
+   94 |                 uint8_t data = UART0->D;
+      |                         ^~~~
+uart.c(9): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+    9 |         while(str[i] != '\0'){
+      |               ^~~
+uart.c(10): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   10 |                 UART0_Transmit(str[i++]);
+      |                                ^~~
+uart.c(55): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   55 |         PORTA->PCR[1] = ~PORT_PCR_MUX_MASK;
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4441): note: expanded from macro 'PORTA'
+ 4441 | #define PORTA                                    ((PORT_Type *)PORTA_BASE)
+      |                                                  ^
+uart.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   56 |         PORTA->PCR[1] = PORT_PCR_ISF_MASK | PORT_PCR_MUX(2); // RX
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4441): note: expanded from macro 'PORTA'
+ 4441 | #define PORTA                                    ((PORT_Type *)PORTA_BASE)
+      |                                                  ^
+uart.c(57): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   57 |         PORTA->PCR[2] = ~PORT_PCR_MUX_MASK;
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4441): note: expanded from macro 'PORTA'
+ 4441 | #define PORTA                                    ((PORT_Type *)PORTA_BASE)
+      |                                                  ^
+uart.c(58): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   58 |         PORTA->PCR[2] = PORT_PCR_ISF_MASK | PORT_PCR_MUX(2); // TX
+      |         ^~~~~~~~~~
+C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include\MKL25Z4.h(4441): note: expanded from macro 'PORTA'
+ 4441 | #define PORTA                                    ((PORT_Type *)PORTA_BASE)
+      |                                                  ^
+11 warnings generated.
 compiling uart.c...
+clock.c(19): warning: // comments are not allowed in this language [-Wcomment]
+   19 |         // MCGOUTCLOCK are ca si iesire, selectia FLL
+      |         ^
+clock.c(96): warning: no newline at end of file [-Wnewline-eof]
+   96 | }
+      |  ^
+clock.c(3): warning: no previous extern declaration for non-static variable 'base_tick' [-Wmissing-variable-declarations]
+    3 | uint16_t base_tick;
+      |          ^
+clock.c(3): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    3 | uint16_t base_tick;
+      | ^
+clock.c(4): warning: no previous extern declaration for non-static variable 'tick_50ms' [-Wmissing-variable-declarations]
+    4 | uint16_t tick_50ms;
+      |          ^
+clock.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    4 | uint16_t tick_50ms;
+      | ^
+clock.c(5): warning: no previous extern declaration for non-static variable 'tick_100ms' [-Wmissing-variable-declarations]
+    5 | uint16_t tick_100ms;
+      |          ^
+clock.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    5 | uint16_t tick_100ms;
+      | ^
+clock.c(6): warning: no previous extern declaration for non-static variable 'tick_500ms' [-Wmissing-variable-declarations]
+    6 | uint16_t tick_500ms;
+      |          ^
+clock.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    6 | uint16_t tick_500ms;
+      | ^
+clock.c(7): warning: no previous extern declaration for non-static variable 'tick_1s' [-Wmissing-variable-declarations]
+    7 | uint16_t tick_1s;
+      |          ^
+clock.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    7 | uint16_t tick_1s;
+      | ^
+7 warnings generated.
+compiling clock.c...
+adc.c(1): warning: In file included from...
+./adc.h(3): warning: // comments are not allowed in this language [-Wcomment]
+    3 | #define ADC_CHANNEL (11) // PORT C PIN 2
+      |                          ^
+adc.c(4): warning: no previous extern declaration for non-static variable 'flame_status' [-Wmissing-variable-declarations]
+    4 | int volatile flame_status = 0;
+      |              ^
+adc.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    4 | int volatile flame_status = 0;
+      | ^
+adc.c(6): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+    6 | void ADC0_Init() {
+      |               ^
+      |                void
+adc.c(8): warning: // comments are not allowed in this language [-Wcomment]
+    8 |         // Activarea semnalului de ceas pentru modulul periferic ADC
+      |         ^
+adc.c(41): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   41 | int ADC0_Calibrate() {
+      |                   ^
+      |                    void
+adc.c(70): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+   70 |         uint16_t calibration_var = 0x0000;
+      |                  ^
+adc.c(111): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+  111 | uint16_t ADC0_Read(){
+      |                   ^
+      |                    void
+adc.c(132): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+  132 | void ADC0_IRQHandler(){
+      |                     ^
+      |                      void
+8 warnings generated.
+compiling adc.c...
 linking...
-Program Size: Code=3780 RO-data=272 RW-data=0 ZI-data=360  
-".\Objects\FlameDetector.axf" - 0 Error(s), 39 Warning(s).
+Program Size: Code=5528 RO-data=272 RW-data=0 ZI-data=392  
+".\Objects\FlameDetector.axf" - 0 Error(s), 101 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
                 http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
-                ARM.CMSIS.5.9.0
+                ARM::CMSIS@5.9.0
                 CMSIS (Common Microcontroller Software Interface Standard)
    * Component: CORE Version: 5.6.0
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.Kinetis_KLxx_DFP.1.15.0.pack
-                Keil.Kinetis_KLxx_DFP.1.15.0
+                https://www.keil.com/pack/Keil.Kinetis_KLxx_DFP.1.15.1.pack
+                Keil::Kinetis_KLxx_DFP@1.15.1
                 NXP Kinetis KLxx Series Device Support and Examples
    * Component: Startup Version: 2.5.0
 
@@ -204,17 +484,17 @@ Package Vendor: Keil
   ./RTE/Device/MKL25Z128xxx4
   ./RTE/_Target_1
   C:/Users/Admin/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
-  C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include
+  C:/Users/Admin/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:5.6.0
+   * Component: ARM::CMSIS:CORE@5.6.0
 
-   * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device/Source/ARM/startup_MKL25Z4.s
-      Include file:  Device/Source/system_MKL25Z4.h
+   * Component: Keil::Device:Startup@2.5.0
       Source file:   Device/Source/system_MKL25Z4.c
-Build Time Elapsed:  00:00:01
+      Include file:  Device/Source/system_MKL25Z4.h
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

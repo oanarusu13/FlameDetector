@@ -1,10 +1,21 @@
 #include "uart.h"
 #include "pit.h"
 #include "gpio.h"
+#include "adc.h"
+#include "clock.h"
+#include "pwm.h"
 
 extern uint32_t timer_value;
 extern uint8_t led_state;
 
+extern volatile uint8_t flag_50ms;
+extern volatile uint8_t flag_100ms;
+extern volatile uint8_t flag_500ms;
+extern volatile uint8_t flag_1s;
+extern volatile uint8_t flag_5s;
+
+extern volatile int angle_left;
+extern volatile int angle_right;
 
 void updateLEDs(){
 		switch(led_state){
@@ -64,6 +75,11 @@ void initLeds()
 }
 
 int main(void) {
+	int i = 0;
+	
+	SystemClock_Configure();
+	SystemClockTick_Configure();
+	TPM2_Init();
 	
 	// Baudrate 14.4kbps, Oversampling rate 16
 	UART0_Initialize(14400, 16);
@@ -71,8 +87,26 @@ int main(void) {
 	initLeds();
 	PIT_Init();
 	ADC0_Init();
-	while(1) {
 	
+	
+	while(1){
+		
+		while(!flag_1s){
+			ADC0_IRQHandler();
+		}
+		Signal_Control();
+		flag_1s = 0U;
+		angle_left = 1;
+		angle_right = 0;
+		
+		while(!flag_1s){
+			ADC0_IRQHandler();
+		}
+		Signal_Control();
+		flag_1s = 0U;
+		angle_left = 0;
+		angle_right = 1;
+
 	}
 	
 	return 0;

@@ -1,6 +1,6 @@
 ./objects/adc.o: adc.c adc.h \
-  C:\Users\Admin\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h \
-  D:\Keil\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Users\Admin\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL25Z4.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
   C:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm0plus.h \
   C:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
   C:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \

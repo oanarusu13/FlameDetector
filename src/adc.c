@@ -1,7 +1,7 @@
 #include "adc.h"
 #include "uart.h"
 
-#define ADC_CHANNEL (8) // PORT C PIN 1
+int volatile flame_status = 0;
 
 void ADC0_Init() {
 	
@@ -13,11 +13,11 @@ void ADC0_Init() {
 	
 	ADC0->CFG1 = 0x00;
 
-	// Selectarea modului de conversie pe 16 biti single-ended --> MODE
+	// Selectarea modului de conversie pe 10 biti single-ended --> MODE
 	// Selectarea sursei de ceas pentru generarea ceasului intern --> ADICLK
 	// Selectarea ratei de divizare folosit de periferic pentru generarea ceasului intern --> ADIV
 	// Set ADC clock frequency fADCK less than or equal to 4 MHz (PG. 494)
-	ADC0->CFG1 |= ADC_CFG1_MODE(3) |
+	ADC0->CFG1 |= ADC_CFG1_MODE(2) |
 							 ADC_CFG1_ADICLK(0) |
 							 ADC_CFG1_ADIV(2);
 	
@@ -34,15 +34,15 @@ void ADC0_Init() {
 	// Enables conversion complete interrupts
 	ADC0->SC1[0] |= ADC_SC1_AIEN_MASK;
 	
-	NVIC_ClearPendingIRQ(ADC0_IRQn);
-	NVIC_EnableIRQ(ADC0_IRQn);	
+	//NVIC_ClearPendingIRQ(ADC0_IRQn);
+	//NVIC_EnableIRQ(ADC0_IRQn);	
 }
 
 int ADC0_Calibrate() {
 	
 	// ===== For best calibration results =====
 	
-	ADC0_CFG1 |= ADC_CFG1_MODE(3)  |  				 // 16 bits mode
+	ADC0_CFG1 |= ADC_CFG1_MODE(2)  |  				 // 10 bits mode: 2
                 ADC_CFG1_ADICLK(1)|  // Input Bus Clock divided by 2
                 ADC_CFG1_ADIV(3);   // Clock divide by 8
 	
@@ -130,29 +130,28 @@ uint16_t ADC0_Read(){
 }
 
 void ADC0_IRQHandler(){
-	uint16_t analog_input = (uint16_t) ADC0->R[0];
 
-	float measured_voltage = (analog_input * 3.3f) / 65535;
+	uint16_t analog_input = (uint16_t) ADC0->R[0];
 	
+	float measured_voltage = (float)(analog_input * 3.3) / 1023;
 	
 	uint8_t parte_zecimala = (uint8_t) measured_voltage;
 	uint8_t parte_fractionara1 = ((uint8_t)(measured_voltage * 10)) % 10;
 	uint8_t parte_fractionara2 = ((uint8_t)(measured_voltage * 100)) % 10;
-	UART0_Transmit('V');
-	UART0_Transmit('o');
-	UART0_Transmit('l');
-	UART0_Transmit('t');
-	UART0_Transmit('a');
-	UART0_Transmit('g');
-	UART0_Transmit('e');
-	UART0_Transmit(' ');
-	UART0_Transmit('=');
-	UART0_Transmit(' ');
 	UART0_Transmit(parte_zecimala + 0x30);
 	UART0_Transmit('.');
 	UART0_Transmit(parte_fractionara1 + 0x30);
 	UART0_Transmit(parte_fractionara2 + 0x30);
-	UART0_Transmit('V');
 	UART0_Transmit(0x0A);
 	UART0_Transmit(0x0D);
+	
+	if (measured_voltage > 2){
+		flame_status = 1;
+	}
+	else if (measured_voltage > 1){
+		flame_status = 0;
+	}
+	else 
+		flame_status = -1;
+	
 }
