@@ -1,8 +1,14 @@
-from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QVBoxLayout, QWidget, QGroupBox, QLabel, QPushButton, QLineEdit, QTextEdit
-from PySide6.QtGui import QIcon, QPalette, QColor, QFont
-from PySide6.QtCore import Qt
-import pyqtgraph as pg
+import random
 
+from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QVBoxLayout, QWidget, QGroupBox, QLabel, QPushButton, QLineEdit, \
+    QTextEdit
+from PySide6.QtGui import QIcon, QPalette, QColor, QFont
+from PySide6.QtCore import Qt, QTimer, QTime
+import pyqtgraph as pg
+import serial
+
+ser = serial.Serial('COM10', 14400)
+ox_counter = 1
 
 class MainWindow(QMainWindow):
     promotie: str = "2023-2024"
@@ -10,11 +16,11 @@ class MainWindow(QMainWindow):
         "Rusu Oana",
         "Grama Teona",
     ]
+
     def __init__(self):
         super().__init__()
         self.setWindowTitle(f"Proiect Microprocesoare {self.promotie}")
         self.setWindowIcon(QIcon("./icon.png"))
-        
 
         primary_layout = QVBoxLayout()
         secondary_layout = QHBoxLayout()
@@ -28,14 +34,14 @@ class MainWindow(QMainWindow):
         first_member = QLabel(f"Membru 1: {self.team[0]}")
         second_member = QLabel(f"Membru 2: {self.team[1]}")
         team_box_layout = QVBoxLayout()
-        team_box_layout.addWidget(first_member,1)
-        team_box_layout.addWidget(second_member,1)
+        team_box_layout.addWidget(first_member, 1)
+        team_box_layout.addWidget(second_member, 1)
         team_box.setLayout(team_box_layout)
 
         control_panel_box = QGroupBox("Control Panel")
         control_panel_box.setFont(bold_font)
 
-        button1 = QPushButton("Control 1")
+        button1 = QPushButton("Reverse LEDs")
         button2 = QPushButton("Control 2")
         button3 = QPushButton("Send")
         button3.clicked.connect(self.send_input)
@@ -44,26 +50,32 @@ class MainWindow(QMainWindow):
         line_edit_label = QLabel("Input:", parent=self.line_edit)
         control_panel_box_layout = QVBoxLayout()
         control_panel_box_layout.setSpacing(5)
-        control_panel_box_layout.addWidget(button1,1)
-        control_panel_box_layout.addWidget(button2,1)
+        control_panel_box_layout.addWidget(button1, 1)
+        control_panel_box_layout.addWidget(button2, 1)
 
         control_panel_box_layout.addStretch()
         control_panel_box_layout.addWidget(line_edit_label)
         control_panel_box_layout.addWidget(self.line_edit, 1)
-        control_panel_box_layout.addWidget(button3,1)
+        control_panel_box_layout.addWidget(button3, 1)
 
         control_panel_box.setLayout(control_panel_box_layout)
 
         tertiary_layout.addWidget(team_box, 1)
-        tertiary_layout.addWidget(control_panel_box,5)
+        tertiary_layout.addWidget(control_panel_box, 5)
+        self.plot_widget = None
+        #try:
+        self.plot_widget = pg.PlotWidget()
+        self.plot_widget.plotItem.setLabel('left', 'Flame Amplitudde')
+        self.plot_widget.plotItem.setLabel('bottom', 'Samples')
+        #except RuntimeError:
+        #    print('ok')
+        self.data = []
+        hour = []
+        flames = []
 
-        plot_widget = pg.PlotWidget()
-        hour = [1,2,3,4,5,6,7,8,9,10]
-        temperature = [30,32,34,32,33,31,29,32,35,45]
+        self.plot_widget.plot(hour, flames)
 
-        plot_widget.plot(hour, temperature)
-
-        secondary_layout.addWidget(plot_widget, 3)
+        secondary_layout.addWidget(self.plot_widget, 3)
         secondary_layout.addLayout(tertiary_layout, 1)
 
         primary_layout.addLayout(secondary_layout, 4)
@@ -79,10 +91,38 @@ class MainWindow(QMainWindow):
 
         widget = QWidget()
         widget.setLayout(primary_layout)
-        
+
         self.setCentralWidget(widget)
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_graph)
+        self.timer.start(50)
+
+    def update_graph(self):
+        global ox_counter
+        #new_second = int(QTime.currentTime().toString("ss"))
+        new_second = ox_counter
+        ox_counter = ox_counter + 1
+        new_flame = 0
+        while True:
+            if ser.in_waiting > 0:
+                new_flame = float(ser.readline())
+                print("Received data:", new_flame)
+            else:
+                break
+
+        self.plot_widget.clear()
+        self.data.append((new_second, new_flame))
+        x_data, y_data = zip(*self.data)
+        self.plot_widget.plot(x_data, y_data, pen='y')
+        self.plot_widget.setXRange(max(0, new_second - 65), new_second)
 
     def send_input(self):
         input = self.line_edit.text()
         self.line_edit.clear()
         self.text_edit.insertPlainText(f"INPUT: {input}\n")
+
+    def read_serial_data(self):
+        if self.ser.in_waiting > 0:
+            return float(self.ser.readline().decode().strip())
+        else:
+            return 0.0
