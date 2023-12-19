@@ -3,8 +3,9 @@
 #include "gpio.h"
 
 uint32_t timer_value;
-uint8_t led_state;
+int8_t led_state;
 
+volatile int8_t reverse_leds = 0;
 static const float ratio_sys_tick = 2.2918;
 
 extern void updateLEDs();
@@ -47,8 +48,13 @@ void PIT_IRQHandler(void) {
 	
 	if(PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK) {
 		PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;
-		led_state++;
-		led_state %= 4;
+		if (reverse_leds){
+			led_state--;
+		}
+		else {
+			led_state++;
+			led_state %= 4;
+		}
 		updateLEDs();
 	}
 	

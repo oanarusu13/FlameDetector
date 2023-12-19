@@ -4,6 +4,7 @@
 volatile int angle_left;
 volatile int angle_right;
 extern volatile int flame_status;
+volatile int8_t manual_servo;
 
 // Function to convert an integer to a string
 void itoa(int num, char* str, int base) {
@@ -98,15 +99,8 @@ void TPM2_Init(){
 
 void Signal_Control(){
 	static uint8_t duty_cycle = 0;
-	
-	//if (direction < 0){
-	//	duty_cycle = 10;
-	//}
-	//else 
-	//	duty_cycle = 20;
-	
+
 	// Manual Control
-	
 	if (angle_left){
 		duty_cycle = 15;
 		angle_left = 0;
@@ -115,7 +109,6 @@ void Signal_Control(){
 		duty_cycle = 6;
 		angle_right = 0;
 	}
-	
 	
 	// Resetarea valorii numaratorului asociat LPTPM Counter
 	TPM2->CNT = 0x0000;

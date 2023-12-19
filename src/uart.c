@@ -3,6 +3,10 @@
 extern volatile int angle_left;
 extern volatile int angle_right;
 
+extern volatile int8_t reverse_leds;
+extern volatile int8_t manual_servo;
+
+
 /* Transmite un string */
 void UART0_Transmit_String(uint8_t* str) {
 	uint8_t i = 0;
@@ -92,14 +96,13 @@ void UART0_Initialize(uint32_t baud_rate, uint16_t osr) {
 void UART0_IRQHandler(void) {
 	if(UART0->S1 & UART0_S1_RDRF_MASK) {
 		uint8_t data = UART0->D;
-		
-		//Manual control
-		/*
-		if (data == 44){
+		if (data == 'r')
+			reverse_leds = !reverse_leds;
+		else if (data == 'm')
+			manual_servo = !manual_servo;
+		else if (data == ',')
 			angle_left = 1;
-		}
-		else if (data == 46){
+		else if (data == '.')
 			angle_right = 1;
-		}*/
 	}
 }
