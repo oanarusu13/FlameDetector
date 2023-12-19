@@ -42,9 +42,15 @@ class MainWindow(QMainWindow):
         control_panel_box.setFont(bold_font)
 
         button1 = QPushButton("Reverse LEDs")
-        button2 = QPushButton("Control 2")
+        button2 = QPushButton("Manual Servo Control")
+        button4 = QPushButton("Servo CCW")
+        button5 = QPushButton("Servo CW")
         button3 = QPushButton("Send")
         button3.clicked.connect(self.send_input)
+        button1.clicked.connect(self.reverse_leds)
+        button4.clicked.connect(self.servo_ccw)
+        button5.clicked.connect(self.servo_cw)
+        button2.clicked.connect(self.servo_manual)
         self.line_edit = QLineEdit()
         self.line_edit.setAlignment(Qt.AlignmentFlag.AlignBottom)
         line_edit_label = QLabel("Input:", parent=self.line_edit)
@@ -52,6 +58,8 @@ class MainWindow(QMainWindow):
         control_panel_box_layout.setSpacing(5)
         control_panel_box_layout.addWidget(button1, 1)
         control_panel_box_layout.addWidget(button2, 1)
+        control_panel_box_layout.addWidget(button4, 1)
+        control_panel_box_layout.addWidget(button5, 1)
 
         control_panel_box_layout.addStretch()
         control_panel_box_layout.addWidget(line_edit_label)
@@ -116,10 +124,27 @@ class MainWindow(QMainWindow):
         self.plot_widget.plot(x_data, y_data, pen='y')
         self.plot_widget.setXRange(max(0, new_second - 65), new_second)
 
+    def reverse_leds(self):
+        self.text_edit.insertPlainText(f"INPUT: r\n")
+        ser.write('r'.encode())
+
+    def servo_manual(self):
+        self.text_edit.insertPlainText(f"INPUT: m\n")
+        ser.write('m'.encode())
+
+    def servo_ccw(self):
+        self.text_edit.insertPlainText(f"INPUT: ,\n")
+        ser.write(','.encode())
+
+    def servo_cw(self):
+        self.text_edit.insertPlainText(f"INPUT: .\n")
+        ser.write('.'.encode())
+
     def send_input(self):
         input = self.line_edit.text()
         self.line_edit.clear()
         self.text_edit.insertPlainText(f"INPUT: {input}\n")
+        ser.write(input)
 
     def read_serial_data(self):
         if self.ser.in_waiting > 0:
