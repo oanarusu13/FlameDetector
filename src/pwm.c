@@ -5,7 +5,8 @@ volatile int angle_left;
 volatile int angle_right;
 extern volatile int flame_status;
 volatile int8_t manual_servo;
-
+//volatile int servo_status = 0;
+//volatile int can_modify_servo = 0;
 // Function to convert an integer to a string
 void itoa(int num, char* str, int base) {
     int i = 0;
@@ -109,7 +110,20 @@ void Signal_Control(){
 		duty_cycle = 6;
 		angle_right = 0;
 	}
-	
+/*	duty_cycle = 8;
+if (can_modify_servo && flame_status != servo_status){
+		if (flame_status < servo_status){
+			duty_cycle = 15;
+			servo_status--;
+		}
+		else	if (flame_status < servo_status){
+			duty_cycle = 6;
+			servo_status++;
+		}
+	}
+	else 
+		can_modify_servo = 0;
+	*/
 	// Resetarea valorii numaratorului asociat LPTPM Counter
 	TPM2->CNT = 0x0000;
 	
