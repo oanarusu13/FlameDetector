@@ -1,13 +1,12 @@
 #include "pwm.h"
 #include "general.h"
 
-volatile int angle_left;
-volatile int angle_right;
-extern volatile int flame_status;
+
+extern int volatile flame_status;
 volatile int8_t manual_servo;
-//volatile int servo_status = 0;
-//volatile int can_modify_servo = 0;
+
 // Function to convert an integer to a string
+  
 void itoa(int num, char* str, int base) {
     int i = 0;
     int isNegative = 0;
@@ -99,23 +98,11 @@ void TPM2_Init(){
 }
 
 void Signal_Control(){
+	
 	static uint8_t duty_cycle = 0;
 
 
-/*	duty_cycle = 8;
-if (can_modify_servo && flame_status != servo_status){
-		if (flame_status < servo_status){
-			duty_cycle = 15;
-			servo_status--;
-		}
-		else	if (flame_status < servo_status){
-			duty_cycle = 6;
-			servo_status++;
-		}
-	}
-	else 
-		can_modify_servo = 0;
-	*/
+	
 	// Resetarea valorii numaratorului asociat LPTPM Counter
 	TPM2->CNT = 0x0000;
 	
@@ -123,14 +110,49 @@ if (can_modify_servo && flame_status != servo_status){
   TPM2->MOD = 375 * 20;
 	
 	// Setarea duty cycle-ului asociat semnalului PWM generat
-  TPM2->CONTROLS[0].CnV = 37 * (duty_cycle)+5*(duty_cycle);
+	if (!manual_servo){
+
+
+	if( flame_status ==-1){
 	
-	/*
-	duty_cycle ++;
-  if (duty_cycle > 20){
-		duty_cycle = 0;
-  }*/
 	
+	duty_cycle++;
+    if (duty_cycle > 0) {
+        duty_cycle = 0;
+    
+	}
+	}
+	else if(flame_status == 0){
+	
+	duty_cycle++;
+    if (duty_cycle > 0) {
+        duty_cycle = 9;
+    }
+	
+
+}
+	else
+{
+	duty_cycle++;
+    if (duty_cycle > 0) {
+        duty_cycle = 19;
+    }
+	
+}
+}
+	if(manual_servo)
+	{	
+   
+ 
+	 	duty_cycle++;
+    if (duty_cycle > 20) {
+        duty_cycle = 0;
+    }
+	
+	
+	}
+	  TPM2->CONTROLS[0].CnV = 37 * duty_cycle + 5*37 ;
+
 	#ifdef DEBUG
 		char str[16];
 		itoa(duty_cycle, (char*)str, 10);
@@ -140,3 +162,4 @@ if (can_modify_servo && flame_status != servo_status){
 	#endif
 
 }
+
