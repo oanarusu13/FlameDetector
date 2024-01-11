@@ -97,25 +97,13 @@ int main(void) {
 	
 	while(1){
 		
-		while(!flag_1s){
-			ADC0_IRQHandler();
-		}
-		if (!manual_servo){
-			angle_left = 1;
-			angle_right = 0;
-		}
-		Signal_Control();
-		flag_1s = 0U;
-
+	
 		
 		while(!flag_1s){
 			ADC0_IRQHandler();
 		}
 		
-		if (!manual_servo){
-			angle_left = 0;
-			angle_right = 1;
-		}
+	
 		Signal_Control();
 		flag_1s = 0U;
 	}
