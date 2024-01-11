@@ -2,7 +2,6 @@
 #include "uart.h"
 
 int volatile flame_status = 0;
-extern volatile int can_modify_servo;
 
 void ADC0_Init() {
 	
@@ -154,17 +153,5 @@ void ADC0_IRQHandler(){
 	}
 	else 
 		flame_status = -1;
-	
-	/*
-		if (!can_modify_servo){
-		if (measured_voltage > 2){
-		flame_status = 1;
-	}
-	else if (measured_voltage > 1){
-		flame_status = 0;
-	}
-	else 
-		flame_status = -1;
-	can_modify_servo = 1;
-	}*/
+
 }
