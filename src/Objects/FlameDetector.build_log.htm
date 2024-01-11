@@ -21,13 +21,328 @@ Target DLL:      CMSIS_AGDI.dll V1.33.15.0
 Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
-D:\qProcesoare\FlameDetector_bun\FlameDetector\FlameDetector\src\FlameDetector.uvprojx
-Project File Date:  01/07/2024
+D:\qProcesoare\New folder (6)\FlameDetector\src\FlameDetector.uvprojx
+Project File Date:  01/11/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
-".\Objects\FlameDetector.axf" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+gpio.c(1): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define RED_LED_PIN (18) // PORT B RED LED
+                         ^
+./gpio.h(26): warning: no newline at end of file [-Wnewline-eof]
+void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+                                                            ^
+gpio.c(3): warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+extern led_state;
+~~~~~~ ^
+int
+gpio.c(6): warning: // comments are not allowed in this language [-Wcomment]
+        // Siguranta -> status e ori 0 ori 1
+        ^
+gpio.c(10): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOA->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(13): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOB->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(16): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOC->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(19): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOD->PDDR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(32): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOA->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(36): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOB->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(40): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOC->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(44): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                        GPIOD->PSOR |= (state << pin);
+                                    ~~  ~~~~~~^~~~~~
+gpio.c(49): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+13 warnings generated.
+compiling gpio.c...
+clock.c(19): warning: // comments are not allowed in this language [-Wcomment]
+        // MCGOUTCLOCK are ca si iesire, selectia FLL
+        ^
+clock.c(96): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+clock.c(3): warning: no previous extern declaration for non-static variable 'base_tick' [-Wmissing-variable-declarations]
+uint16_t base_tick;
+         ^
+clock.c(3): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t base_tick;
+^
+clock.c(4): warning: no previous extern declaration for non-static variable 'tick_50ms' [-Wmissing-variable-declarations]
+uint16_t tick_50ms;
+         ^
+clock.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t tick_50ms;
+^
+clock.c(5): warning: no previous extern declaration for non-static variable 'tick_100ms' [-Wmissing-variable-declarations]
+uint16_t tick_100ms;
+         ^
+clock.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t tick_100ms;
+^
+clock.c(6): warning: no previous extern declaration for non-static variable 'tick_500ms' [-Wmissing-variable-declarations]
+uint16_t tick_500ms;
+         ^
+clock.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t tick_500ms;
+^
+clock.c(7): warning: no previous extern declaration for non-static variable 'tick_1s' [-Wmissing-variable-declarations]
+uint16_t tick_1s;
+         ^
+clock.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t tick_1s;
+^
+7 warnings generated.
+compiling clock.c...
+uart.c(20): warning: // comments are not allowed in this language [-Wcomment]
+        // Utilizam masca TDRE pentru a verifica
+        ^
+uart.c(65): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+        uint16_t temp = sys_clock;
+                 ~~~~   ^~~~~~~~~
+uart.c(65): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        uint16_t temp = sys_clock;
+                 ^
+uart.c(65): warning: unused variable 'temp' [-Wunused-variable]
+4 warnings generated.
+compiling uart.c...
+pit.c(1): warning: In file included from...
+./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
+void PIT_Init(void); // Functie de initializarea a modulului periferic
+                     ^
+pit.c(3): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define RED_LED_PIN (18) // PORT B RED LED
+                         ^
+./gpio.h(26): warning: no newline at end of file [-Wnewline-eof]
+void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+                                                            ^
+pit.c(8): warning: no previous extern declaration for non-static variable 'reverse_leds' [-Wmissing-variable-declarations]
+volatile int8_t reverse_leds = 0;
+                ^
+pit.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile int8_t reverse_leds = 0;
+         ^
+pit.c(9): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+static const float ratio_sys_tick = 2.2918;
+                   ~~~~~~~~~~~~~~   ^~~~~~
+pit.c(11): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+extern void updateLEDs();
+                      ^
+                       void
+pit.c(16): warning: // comments are not allowed in this language [-Wcomment]
+        // Activarea semnalului de ceas pentru perifericul PIT
+        ^
+pit.c(27): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  // Activarea <EE>ntreruperilor pe canalul 0
+               ^
+pit.c(35): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+        // Activara <EE>ntreruperilor pe canalul 1
+                    ^
+pit.c(41): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+        // Activarea <EE>ntreruperii mascabile si setarea prioritatiis
+                     ^
+pit.c(23): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        uint32_t ldval = (uint32_t)(0.286f * 24000000UL) - 1;
+                 ^
+pit.c(64): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+pit.c(5): warning: no previous extern declaration for non-static variable 'timer_value' [-Wmissing-variable-declarations]
+uint32_t timer_value;
+         ^
+pit.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32_t timer_value;
+^
+pit.c(6): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
+int8_t led_state;
+       ^
+pit.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int8_t led_state;
+^
+pit.c(9): warning: unused variable 'ratio_sys_tick' [-Wunused-const-variable]
+static const float ratio_sys_tick = 2.2918;
+                   ^
+15 warnings generated.
+compiling pit.c...
+pwm.c(1): warning: In file included from...
+./pwm.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define OSCILLOSCOPE_PIN (2) // PORT B , PIN 2
+                             ^
+./pwm.h(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void Signal_Control();
+                   ^
+                    void
+pwm.c(2): warning: In file included from...
+./general.h(1): warning: // comments are not allowed in this language [-Wcomment]
+//#define DEBUG
+^
+./general.h(1): warning: no newline at end of file [-Wnewline-eof]
+//#define DEBUG
+               ^
+pwm.c(8): warning: // comments are not allowed in this language [-Wcomment]
+//volatile int servo_status = 0;
+^
+pwm.c(31): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+        str[i++] = (remainder > 9) ? (remainder - 10) + 'a' : remainder + '0';
+                 ~                   ~~~~~~~~~~~~~~~~~^~~~~
+pwm.c(31): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+        str[i++] = (remainder > 9) ? (remainder - 10) + 'a' : remainder + '0';
+                 ~                                            ~~~~~~~~~~^~~~~
+pwm.c(42): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+    int start = 0;
+        ^
+pwm.c(11): warning: no previous prototype for function 'itoa' [-Wmissing-prototypes]
+void itoa(int num, char* str, int base) {
+     ^
+pwm.c(11): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void itoa(int num, char* str, int base) {
+^
+static 
+pwm.c(54): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void TPM2_Init(){
+              ^
+               void
+pwm.c(101): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void Signal_Control(){
+                   ^
+                    void
+pwm.c(101): warning: no previous prototype for function 'Signal_Control' [-Wmissing-prototypes]
+void Signal_Control(){
+     ^
+./pwm.h(7): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+void Signal_Control();
+     ^
+                    void
+pwm.c(4): warning: no previous extern declaration for non-static variable 'angle_left' [-Wmissing-variable-declarations]
+volatile int angle_left;
+             ^
+pwm.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile int angle_left;
+         ^
+pwm.c(5): warning: no previous extern declaration for non-static variable 'angle_right' [-Wmissing-variable-declarations]
+volatile int angle_right;
+             ^
+pwm.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile int angle_right;
+         ^
+pwm.c(7): warning: no previous extern declaration for non-static variable 'manual_servo' [-Wmissing-variable-declarations]
+volatile int8_t manual_servo;
+                ^
+pwm.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile int8_t manual_servo;
+         ^
+15 warnings generated.
+compiling pwm.c...
+main.c(2): warning: In file included from...
+./pit.h(3): warning: // comments are not allowed in this language [-Wcomment]
+void PIT_Init(void); // Functie de initializarea a modulului periferic
+                     ^
+main.c(3): warning: In file included from...
+./gpio.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define RED_LED_PIN (18) // PORT B RED LED
+                         ^
+./gpio.h(26): warning: no newline at end of file [-Wnewline-eof]
+void digitalWrite(uint8_t pin, uint8_t state, uint8_t port);
+                                                            ^
+main.c(4): warning: In file included from...
+./adc.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define ADC_CHANNEL (11) // PORT C PIN 2
+                         ^
+main.c(6): warning: In file included from...
+./pwm.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define OSCILLOSCOPE_PIN (2) // PORT B , PIN 2
+                             ^
+./pwm.h(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void Signal_Control();
+                   ^
+                    void
+main.c(22): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void updateLEDs(){
+               ^
+                void
+main.c(22): warning: no previous prototype for function 'updateLEDs' [-Wmissing-prototypes]
+void updateLEDs(){
+     ^
+main.c(22): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void updateLEDs(){
+^
+static 
+main.c(54): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void initLeds()
+             ^
+              void
+main.c(56): warning: // comments are not allowed in this language [-Wcomment]
+        // Semnal de ceas pentru PORT B
+        ^
+main.c(54): warning: no previous prototype for function 'initLeds' [-Wmissing-prototypes]
+void initLeds()
+     ^
+main.c(54): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initLeds()
+^
+static 
+main.c(84): warning: unused variable 'i' [-Wunused-variable]
+        int i = 0;
+            ^
+main.c(123): warning: 'return' will never be executed [-Wunreachable-code-return]
+        return 0;
+               ^
+13 warnings generated.
+compiling main.c...
+adc.c(1): warning: In file included from...
+./adc.h(3): warning: // comments are not allowed in this language [-Wcomment]
+#define ADC_CHANNEL (11) // PORT C PIN 2
+                         ^
+adc.c(4): warning: no previous extern declaration for non-static variable 'flame_status' [-Wmissing-variable-declarations]
+int volatile flame_status = 0;
+             ^
+adc.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int volatile flame_status = 0;
+^
+adc.c(7): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void ADC0_Init() {
+              ^
+               void
+adc.c(9): warning: // comments are not allowed in this language [-Wcomment]
+        // Activarea semnalului de ceas pentru modulul periferic ADC
+        ^
+adc.c(42): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int ADC0_Calibrate() {
+                  ^
+                   void
+adc.c(71): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        uint16_t calibration_var = 0x0000;
+                 ^
+adc.c(112): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+uint16_t ADC0_Read(){
+                  ^
+                   void
+adc.c(133): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void ADC0_IRQHandler(){
+                    ^
+                     void
+8 warnings generated.
+compiling adc.c...
+assembling startup_MKL25Z4.s...
+compiling system_MKL25Z4.c...
+linking...
+Program Size: Code=5636 RO-data=272 RW-data=0 ZI-data=392  
+".\Objects\FlameDetector.axf" - 0 Error(s), 75 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,10 +369,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device/Source/ARM/startup_MKL25Z4.s
-      Source file:   Device/Source/system_MKL25Z4.c
       Include file:  Device/Source/system_MKL25Z4.h
-Build Time Elapsed:  00:00:00
+      Source file:   Device/Source/system_MKL25Z4.c
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
