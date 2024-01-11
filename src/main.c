@@ -87,8 +87,8 @@ int main(void) {
 	SystemClockTick_Configure();
 	TPM2_Init();
 	
-	// Baudrate 14.4kbps, Oversampling rate 8
-	UART0_Initialize(14400, 8);
+	// Baudrate 14.4kbps, Oversampling rate 16
+	UART0_Initialize(14400, 16);
 	
 	initLeds();
 	PIT_Init();

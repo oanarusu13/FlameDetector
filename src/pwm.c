@@ -101,15 +101,7 @@ void TPM2_Init(){
 void Signal_Control(){
 	static uint8_t duty_cycle = 0;
 
-	// Manual Control
-	if (angle_left){
-		duty_cycle = 15;
-		angle_left = 0;
-	}
-	else if (angle_right){
-		duty_cycle = 6;
-		angle_right = 0;
-	}
+
 /*	duty_cycle = 8;
 if (can_modify_servo && flame_status != servo_status){
 		if (flame_status < servo_status){
@@ -131,7 +123,7 @@ if (can_modify_servo && flame_status != servo_status){
   TPM2->MOD = 375 * 20;
 	
 	// Setarea duty cycle-ului asociat semnalului PWM generat
-  TPM2->CONTROLS[0].CnV = 37 * (duty_cycle + 5);
+  TPM2->CONTROLS[0].CnV = 37 * (duty_cycle)+5*(duty_cycle);
 	
 	/*
 	duty_cycle ++;
