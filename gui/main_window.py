@@ -140,14 +140,6 @@ class MainWindow(QMainWindow):
         self.text_edit.insertPlainText(f"INPUT: m\n")
         ser.write('m'.encode())
 
-    def servo_ccw(self):
-        self.text_edit.insertPlainText(f"INPUT: ,\n")
-        ser.write(','.encode())
-
-    def servo_cw(self):
-        self.text_edit.insertPlainText(f"INPUT: .\n")
-        ser.write('.'.encode())
-
     def send_input(self):
         input = self.line_edit.text()
         self.line_edit.clear()
