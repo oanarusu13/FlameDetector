@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt, QTimer, QTime
 import pyqtgraph as pg
 import serial
 
-ser = serial.Serial('COM10', 14400)
+ser = serial.Serial('COM6', 14400)
 ox_counter = 1
 
 class MainWindow(QMainWindow):
@@ -43,13 +43,10 @@ class MainWindow(QMainWindow):
 
         button1 = QPushButton("Reverse LEDs")
         button2 = QPushButton("Manual Servo Control")
-        button4 = QPushButton("Servo CCW")
-        button5 = QPushButton("Servo CW")
+
         button3 = QPushButton("Send")
         button3.clicked.connect(self.send_input)
         button1.clicked.connect(self.reverse_leds)
-        button4.clicked.connect(self.servo_ccw)
-        button5.clicked.connect(self.servo_cw)
         button2.clicked.connect(self.servo_manual)
         self.line_edit = QLineEdit()
         self.line_edit.setAlignment(Qt.AlignmentFlag.AlignBottom)
@@ -58,8 +55,7 @@ class MainWindow(QMainWindow):
         control_panel_box_layout.setSpacing(5)
         control_panel_box_layout.addWidget(button1, 1)
         control_panel_box_layout.addWidget(button2, 1)
-        control_panel_box_layout.addWidget(button4, 1)
-        control_panel_box_layout.addWidget(button5, 1)
+
 
         control_panel_box_layout.addStretch()
         control_panel_box_layout.addWidget(line_edit_label)
@@ -107,9 +103,8 @@ class MainWindow(QMainWindow):
 
     def update_graph(self):
         global ox_counter
-        #new_second = int(QTime.currentTime().toString("ss"))
         new_second = ox_counter
-        ox_counter = ox_counter + 1
+        ox_counter += 1
         new_flame = 0
         while True:
             if ser.in_waiting > 0:
@@ -118,10 +113,23 @@ class MainWindow(QMainWindow):
             else:
                 break
 
-        self.plot_widget.clear()
         self.data.append((new_second, new_flame))
         x_data, y_data = zip(*self.data)
-        self.plot_widget.plot(x_data, y_data, pen='y')
+
+        low_threshold = 1
+        high_threshold = 2
+
+        if new_flame < low_threshold:
+            background_color = 'g'
+        elif low_threshold <= new_flame < high_threshold:
+            background_color = 'y'
+        else:
+            background_color = 'r'
+
+        self.plot_widget.setBackground(background_color)
+
+        self.plot_widget.clear()
+        self.plot_widget.plot(x_data, y_data, pen='k')
         self.plot_widget.setXRange(max(0, new_second - 65), new_second)
 
     def reverse_leds(self):
@@ -144,7 +152,7 @@ class MainWindow(QMainWindow):
         input = self.line_edit.text()
         self.line_edit.clear()
         self.text_edit.insertPlainText(f"INPUT: {input}\n")
-        ser.write(input)
+        ser.write(input.encode())
 
     def read_serial_data(self):
         if self.ser.in_waiting > 0:

@@ -1,8 +1,5 @@
 #include "uart.h"
 
-extern volatile int angle_left;
-extern volatile int angle_right;
-
 extern volatile int8_t reverse_leds;
 extern volatile int8_t manual_servo;
 
@@ -100,9 +97,6 @@ void UART0_IRQHandler(void) {
 			reverse_leds = !reverse_leds;
 		else if (data == 'm')
 			manual_servo = !manual_servo;
-		else if (data == ',')
-			angle_left = 1;
-		else if (data == '.')
-			angle_right = 1;
+		
 	}
 }
